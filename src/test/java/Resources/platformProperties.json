@@ -1,0 +1,14 @@
+{
+
+  "appium:automationName": "UiAutomator2",
+  "platformName": "Android",
+  "appium:deviceName": "3a7fad42",
+  "appium:noReset": true,
+  "appium:appActivity": "com.google.android.apps.youtube.app.watchwhile.WatchWhileActivity",
+  "appium:appPackage": "com.google.android.youtube",
+  "appium:noSign": true,
+  "appium:ensureWebviewsHavePages": true,
+  "appium:nativeWebScreenshot": true,
+  "appium:newCommandTimeout": 3600,
+  "appium:connectHardwareKeyboard": true
+}
