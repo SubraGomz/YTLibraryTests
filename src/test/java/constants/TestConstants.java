@@ -1,5 +1,9 @@
 package constants;
-public interface LibraryConstants {
+
+/**
+* Placeholder for the constants which are used to run Appium Test cases
+ * */
+public interface TestConstants {
 
     String url = "http://127.0.0.1:4723/wd/hub";
     String youTubeID = "com.google.android.youtube:id/";
@@ -31,5 +35,6 @@ public interface LibraryConstants {
     String ensureWebviewsHavePages = "appium:ensureWebviewsHavePages";
     String nativeWebScreenshot = "appium:nativeWebScreenshot";
     String newCommandTimeout = "appium:newCommandTimeout";
+    String pathToTestResourceFile = "/src/test/java/Resources/platformProperties.json";
 
 }

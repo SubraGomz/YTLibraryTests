@@ -1,6 +1,6 @@
 package handlers;
 
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.AppiumDriver;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -13,15 +13,28 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 
-import static constants.LibraryConstants.*;
+import static constants.TestConstants.*;
+
+/**
+ * BaseTestClass has the test configuration steps where we have configured test set up like what need to be configured
+ * before the actual test case is triggered.
+ * Also, here we defined the steps which need to take place after the actual test cases ends
+ * */
+
 public class BaseTestClass {
 
-    public static AndroidDriver driver;
+    /**
+     * Initializing Appium Driver to run the automated test cases
+     * */
+    public static AppiumDriver driver;
 
+    /**
+     * As the name suggests this is the initial step which runs when we trigger this package
+     * */
     @BeforeSuite
     public void setUp() throws IOException, ParseException {
 
-        String dataRootPath = new File(System.getProperty("user.dir")).getPath() + "/src/test/java/Resources/platformProperties.json";
+        String dataRootPath = new File(System.getProperty("user.dir")).getPath() + pathToTestResourceFile;
         JSONParser jsonParser = new JSONParser();
         FileReader reader = new FileReader(dataRootPath);
         Object objectFromJson = jsonParser.parse(reader);
@@ -43,7 +56,7 @@ public class BaseTestClass {
 
             URL remoteUrl = new URL(url);
 
-            driver = new AndroidDriver(remoteUrl, desiredCapabilities);
+            driver = new AppiumDriver(remoteUrl, desiredCapabilities);
 
         }
         catch (Exception exception) {
@@ -53,6 +66,9 @@ public class BaseTestClass {
         }
     }
 
+    /**
+     * As the name suggests this is the last step which helps to quit the appium driver
+     * */
     @AfterSuite
     public void tearDown() {
         driver.quit();
